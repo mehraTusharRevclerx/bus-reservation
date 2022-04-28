@@ -12,6 +12,7 @@ input[type="checkbox"] {
   background: gray;
   position: relative;
   border-radius: 5px;
+  transition: box-shadow 0.3s;
 }
 input[type="checkbox"]:checked {
   background: rgb(0, 255, 13);
@@ -21,8 +22,8 @@ input[type="checkbox"]:checked:after {
   content: "\2713";
   color: #fff;
   /* The following positions my tick in the center, 
-   * but you could just overlay the entire box
-   * with a full after element with a background if you want to */
+  * but you could just overlay the entire box
+  * with a full after element with a background if you want to */
   position: absolute;
   left: 50%;
   top: 50%;
@@ -31,14 +32,14 @@ input[type="checkbox"]:checked:after {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /*
-   * If you want to fully change the check appearance, use the following:
-   * content: " ";
-   * width: 100%;
-   * height: 100%;
-   * background: blue;
-   * top: 0;
-   * left: 0;
-   */
+  * If you want to fully change the check appearance, use the following:
+  * content: " ";
+  * width: 100%;
+  * height: 100%;
+  * background: blue;
+  * top: 0;
+  * left: 0;
+  */
 }
 
 .contentNone::after {
@@ -49,4 +50,26 @@ input[type="checkbox"]:checked:after {
 }
 .busSeatInfo {
   display: none;
+}
+
+.cursor {
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:hover::after {
+  content: "\2713";
+  color: #fff;
+  /* The following positions my tick in the center, 
+  * but you could just overlay the entire box
+  * with a full after element with a background if you want to */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+input[type="checkbox"]:hover {
+  background: rgb(0, 255, 13);
 }

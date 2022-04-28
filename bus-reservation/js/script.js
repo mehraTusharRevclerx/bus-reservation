@@ -13,7 +13,6 @@ const maleArr = new Array();
 const femaleArr = new Array();
 const allSeats = document.querySelectorAll("input[type='checkbox']");
 function mainFun(e) {
-  document.querySelector(".busSeatInfo").style.display = "block";
   allSeats.forEach((seat) => {
     if (seat.checked && e.target.id === "disabledBtn") {
       seat.style.backgroundColor = "#dc3545";
@@ -37,7 +36,9 @@ function mainFun(e) {
       seat.checked = false;
       seat.setAttribute("disabled", "true");
       console.log("female");
-    } else {
+    }
+    if (seat.hasAttribute("disabled")) {
+      seat.classList.add("cursor");
     }
   });
 }
@@ -59,6 +60,8 @@ document.querySelector("#femaleBtn").addEventListener("click", (e) => {
   busSeatInfoFun();
 });
 function busSeatInfoFun() {
+  document.querySelector(".busSeatInfo").style.display = "block";
+
   document.querySelector(
     "#totalSeatInfo"
   ).innerHTML = `Total Seats: ${allSeats.length}`;
