@@ -11,9 +11,15 @@
 const disableArr = new Array();
 const maleArr = new Array();
 const femaleArr = new Array();
+// const emptyArr = new Array();
 const allSeats = document.querySelectorAll("input[type='checkbox']");
 function mainFun(e) {
   allSeats.forEach((seat) => {
+    // if (!seat.checked) {
+    //   emptyArr.push(seat.value);
+    //   console.log(emptyArr);
+    //   document.querySelector("#emptyInfo").innerHTML = emptyArr.length;
+    // }
     if (seat.checked && e.target.id === "disabledBtn") {
       seat.style.backgroundColor = "#dc3545";
       seat.setAttribute("disabled", "true");
@@ -26,6 +32,7 @@ function mainFun(e) {
       seat.classList.add("contentNone");
       seat.setAttribute("disabled", "true");
       maleArr.push(seat.value);
+      // emptyFun(seat);
       seat.checked = false;
       console.log("male");
     }
@@ -33,6 +40,7 @@ function mainFun(e) {
       seat.style.backgroundColor = "#0dcaf0";
       seat.classList.add("contentNone");
       femaleArr.push(seat.value);
+      // emptyFun(seat);
       seat.checked = false;
       seat.setAttribute("disabled", "true");
       console.log("female");
@@ -41,11 +49,12 @@ function mainFun(e) {
       seat.classList.add("cursor");
     }
   });
+  // emptyArr.length = 0;
 }
 
 document.querySelector("#disabledBtn").addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(e.target);
+  // console.log(e.target);
   mainFun(e);
   busSeatInfoFun();
 });
@@ -74,5 +83,7 @@ function busSeatInfoFun() {
   document.querySelector(
     "#femaleInfo"
   ).innerHTML = `Female Seats: ${femaleArr.length}`;
-  // document.querySelector("#emptyInfo");
+  document.querySelector("#emptyInfo").innerHTML = `Empty Seat: ${
+    allSeats.length - (disableArr.length + maleArr.length + femaleArr.length)
+  }`;
 }

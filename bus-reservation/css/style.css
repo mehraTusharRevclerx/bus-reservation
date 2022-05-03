@@ -12,7 +12,7 @@ input[type="checkbox"] {
   background: gray;
   position: relative;
   border-radius: 5px;
-  transition: box-shadow 0.3s;
+  transition: background-color 0.3s;
 }
 input[type="checkbox"]:checked {
   background: rgb(0, 255, 13);
